@@ -3,6 +3,7 @@ import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
 import ClearButton from './components/ClearButton'
+import { evaluate } from 'mathjs';
 // import { toggleSc } from './togglesc'
 
 class App extends Component {
@@ -13,13 +14,13 @@ class App extends Component {
       input: "0"
     };
   } 
-
+  // {input: eval(this.state.input)}
   addToInput = val => {
     this.setState({ input: this.state.input + val });
   }
 
   handleEqual = () => {
-    this.setState({input: this.state.input})
+    this.setState( {input: evaluate(this.state.input)} )
   }
 
   render () {
@@ -38,7 +39,7 @@ class App extends Component {
               <Button handleClick={this.addToInput}>4</Button>
               <Button handleClick={this.addToInput}>5</Button>
               <Button handleClick={this.addToInput}>6</Button>
-              <Button handleClick={this.addToInput}>X</Button>
+              <Button handleClick={this.addToInput}>*</Button>
           </div>
           <div className="row">
               <Button handleClick={this.addToInput}>1</Button>
@@ -58,13 +59,13 @@ class App extends Component {
     
                 }>Scientific</Button>
               <Button handleClick={this.addToInput}>0</Button>
-              <Button handleClick={() => this.handleEqual}>=</Button>
+              <Button handleClick={()=>this.handleEqual()}>=</Button>
               <Button handleClick={this.addToInput}>-</Button>
           </div>
           <div className="scrow" id="scrow" ref="scrow">
               <Button handleClick={this.addToInput}>+/-</Button>
               <Button handleClick={this.addToInput}>x^2</Button>
-              <Button handleClick={() => this.handleEqual}>(x)^(1/2)</Button>
+              <Button handleClick={this.addToInput}>(x)^(1/2)</Button>
           </div>
           <div className="row">
             <ClearButton handleClear={()=> this.setState({ input: '' })}>
