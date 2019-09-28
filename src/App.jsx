@@ -23,6 +23,18 @@ class App extends Component {
     this.setState( {input: evaluate(this.state.input)} )
   }
 
+  handleAbs = () => {
+    this.setState( {input: (-1)*this.state.input} )
+  }
+
+  handleSqrt = () => {
+    this.setState( {input: parseInt(Math.sqrt(this.state.input))} )
+  }
+
+  handleSq = () => {
+    this.setState( {input: this.state.input*this.state.input} )
+  }
+
   render () {
 
     return (
@@ -63,9 +75,9 @@ class App extends Component {
               <Button handleClick={this.addToInput}>-</Button>
           </div>
           <div className="scrow" id="scrow" ref="scrow">
-              <Button handleClick={this.addToInput}>+/-</Button>
-              <Button handleClick={this.addToInput}>x^2</Button>
-              <Button handleClick={this.addToInput}>(x)^(1/2)</Button>
+              <Button handleClick={()=>this.handleAbs()}>+/-</Button>
+              <Button handleClick={()=>this.handleSq()}>x^2</Button>
+              <Button handleClick={()=>this.handleSqrt()}>(x)^(1/2)</Button>
           </div>
           <div className="row">
             <ClearButton handleClear={()=> this.setState({ input: '' })}>
