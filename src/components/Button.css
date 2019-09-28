@@ -5,13 +5,24 @@
     align-items: center;
     font-weight: lighter;
     font-size: 1.4em;
-    background-color: #e0e1e6;
-    color: #888;
+    background-color: #f0f0f0;
+    color: black;
     flex: 1;
     outline: 1px solid #888;
 }
 
 .operator {
     background-color: #fe9241;
+    color: white;
+}
+
+.button-wrapper:hover {
+    background-color: #777777;
+    color: rgb(58, 58, 58);
+    outline: 2px solid #888;
+}
+
+.operator:hover {
+    background-color: #b85103;
     color: white;
 }

@@ -4,7 +4,24 @@ import Button from './components/Button';
 import Input from './components/Input';
 import ClearButton from './components/ClearButton'
 import { evaluate } from 'mathjs';
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 // import { toggleSc } from './togglesc'
+
+
+const GlobalStyle = createGlobalStyle `
+body {
+  background-color: ${props =>
+  props.theme.mode === 'dark' ? '#000' : '#fff'};
+  color: ${props =>
+  props.theme.mode === 'dark' ? '#fff' : '#000'};
+}
+.button-wrapper {
+  background-color: ${props =>
+  props.theme.mode === 'dark' ? '#666' : '#f0f0f0' };
+  color: ${props =>
+  props.theme.mode === 'dark' ? '#fff' : '#000'}
+}
+`
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +55,13 @@ class App extends Component {
   render () {
 
     return (
+
+
+      <ThemeProvider theme={{ mode: 'dark' }}>
+        <>
+        <GlobalStyle />
+
+
       <div className="app">
       <div className="calc-wrapper">
         <Input input={this.state.input}></Input>
@@ -86,6 +110,10 @@ class App extends Component {
           </div>
       </div>
     </div>
+
+    </>
+
+    </ThemeProvider>
   );
 }
 
